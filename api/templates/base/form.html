@@ -1,0 +1,11 @@
+<h1> User Form </h1>
+
+<form>
+     {% for field  in form %}
+     {{field.as_field_group}}
+     {% comment %} {{field.help_text}}
+     {{field.label}}
+     {{field}}
+      {% endcomment %}
+     {% endfor %}
+</form>

@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from .models import BlogPost
 from .serializers import BlogPostSerializer
 from rest_framework.views import APIView
+from .forms import PersonForm
 
 # Create your views here.
 
@@ -35,3 +36,8 @@ class BlogPostList(APIView):
             blog_post = BlogPost.objects.all()
         serializer = BlogPostSerializer(blog_post, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+def index(request):
+    form = PersonForm()
+    context =  {'form': form}
+    return render(request, 'base/form.html', context)
